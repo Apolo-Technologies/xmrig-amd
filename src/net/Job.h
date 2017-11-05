@@ -1,10 +1,10 @@
-/* XMRig
+/* ZRMig
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
  * Copyright 2014-2016 Wolf9466    <https://github.com/OhGodAPet>
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
- * Copyright 2016-2017 XMRig       <support@xmrig.com>
+ * Copyright 2016-2017 ZRMig       <support@zrmig.com>
  *
  *
  *   This program is free software: you can redistribute it and/or modify
@@ -58,7 +58,7 @@ public:
     inline void setNicehash(bool nicehash) { m_nicehash = nicehash; }
     inline void setThreadId(int threadId)  { m_threadId = threadId; }
 
-#   ifdef XMRIG_PROXY_PROJECT
+#   ifdef ZRMIG_PROXY_PROJECT
     inline char *rawBlob()                 { return m_rawBlob; }
     inline const char *rawTarget() const   { return m_rawTarget; }
 #   endif
@@ -71,7 +71,7 @@ public:
     bool operator==(const Job &other) const;
 
 private:
-    VAR_ALIGN(16, uint8_t m_blob[84]); // Max blob size is 84 (75 fixed + 9 variable), aligned to 96. https://github.com/xmrig/xmrig/issues/1 Thanks fireice-uk.
+    VAR_ALIGN(16, uint8_t m_blob[84]); // Max blob size is 84 (75 fixed + 9 variable), aligned to 96. https://github.com/zrmig/zrmig/issues/1 Thanks fireice-uk.
 
     bool m_nicehash;
     int m_poolId;
@@ -81,7 +81,7 @@ private:
     uint64_t m_diff;
     uint64_t m_target;
 
-#   ifdef XMRIG_PROXY_PROJECT
+#   ifdef ZRMIG_PROXY_PROJECT
     VAR_ALIGN(16, char m_rawBlob[169]);
     VAR_ALIGN(16, char m_rawTarget[17]);
 #   endif

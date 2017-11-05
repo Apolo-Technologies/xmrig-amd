@@ -1,10 +1,10 @@
-/* XMRig
+/* ZRMig
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
  * Copyright 2014-2016 Wolf9466    <https://github.com/OhGodAPet>
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
- * Copyright 2016-2017 XMRig       <support@xmrig.com>
+ * Copyright 2016-2017 ZRMig       <support@zrmig.com>
  *
  *
  *   This program is free software: you can redistribute it and/or modify
@@ -24,19 +24,19 @@
 #ifndef __VERSION_H__
 #define __VERSION_H__
 
-#define APP_ID        "xmrig"
-#define APP_NAME      "XMRig"
-#define APP_DESC      "XMRig OpenCL miner"
-#define APP_VERSION   "2.4.3-beta2"
-#define APP_DOMAIN    "xmrig.com"
-#define APP_SITE      "www.xmrig.com"
-#define APP_COPYRIGHT "Copyright (C) 2016-2017 xmrig.com"
+#define APP_ID        "zrmig"
+#define APP_NAME      "ZRMig"
+#define APP_DESC      "ZRMig OpenCL miner"
+#define APP_VERSION   "1.0.0"
+#define APP_DOMAIN    "zrmig.com"
+#define APP_SITE      "www.zrmig.com"
+#define APP_COPYRIGHT "Copyright (C) 2016-2017 zrmig.com"
 #define APP_KIND      "amd"
 
-#define APP_VER_MAJOR  2
-#define APP_VER_MINOR  4
-#define APP_VER_BUILD  3
-#define APP_VER_REV    2
+#define APP_VER_MAJOR  1
+#define APP_VER_MINOR  0
+#define APP_VER_BUILD  0
+#define APP_VER_REV    0
 
 #ifdef _MSC_VER
 #   if (_MSC_VER == 1910 || _MSC_VER == 1911)

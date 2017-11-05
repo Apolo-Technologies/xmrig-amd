@@ -1,10 +1,10 @@
-/* XMRig
+/* ZRMig
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
  * Copyright 2014-2016 Wolf9466    <https://github.com/OhGodAPet>
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
- * Copyright 2016-2017 XMRig       <support@xmrig.com>
+ * Copyright 2016-2017 ZRMig       <support@zrmig.com>
  *
  *
  *   This program is free software: you can redistribute it and/or modify
@@ -73,7 +73,7 @@ void OclWorker::start()
         while (!Workers::isOutdated(m_sequence)) {
             memset(results, 0, sizeof(cl_uint) * (0x100));
 
-            XMRRunJob(m_ctx, results);
+            ZRMRunJob(m_ctx, results);
 
             for (size_t i = 0; i < results[0xFF]; i++) {
                 *m_job.nonce() = results[i];
@@ -114,7 +114,7 @@ void OclWorker::consumeJob()
     save(job);
 
     if (resume(job)) {
-        XMRSetJob(m_ctx, m_job.blobUnsafe(), m_job.size(), m_job.target());
+        ZRMSetJob(m_ctx, m_job.blobUnsafe(), m_job.size(), m_job.target());
         return;
     }
 
@@ -129,7 +129,7 @@ void OclWorker::consumeJob()
     }
 
     m_ctx->Nonce = m_nonce;
-    XMRSetJob(m_ctx, m_job.blobUnsafe(), m_job.size(), m_job.target());
+    ZRMSetJob(m_ctx, m_job.blobUnsafe(), m_job.size(), m_job.target());
 }
 
 

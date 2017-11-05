@@ -602,11 +602,11 @@ size_t InitOpenCL(GpuContext* ctx, size_t num_gpus, size_t platform_idx)
     ;
 
     std::string source_code(cryptonightCL);
-    source_code = std::regex_replace(source_code, std::regex("XMRIG_INCLUDE_WOLF_AES"), wolfAesCL);
-    source_code = std::regex_replace(source_code, std::regex("XMRIG_INCLUDE_WOLF_SKEIN"), wolfSkeinCL);
-    source_code = std::regex_replace(source_code, std::regex("XMRIG_INCLUDE_JH"), jhCL);
-    source_code = std::regex_replace(source_code, std::regex("XMRIG_INCLUDE_BLAKE256"), blake256CL);
-    source_code = std::regex_replace(source_code, std::regex("XMRIG_INCLUDE_GROESTL256"), groestl256CL);
+    source_code = std::regex_replace(source_code, std::regex("ZRMIG_INCLUDE_WOLF_AES"), wolfAesCL);
+    source_code = std::regex_replace(source_code, std::regex("ZRMIG_INCLUDE_WOLF_SKEIN"), wolfSkeinCL);
+    source_code = std::regex_replace(source_code, std::regex("ZRMIG_INCLUDE_JH"), jhCL);
+    source_code = std::regex_replace(source_code, std::regex("ZRMIG_INCLUDE_BLAKE256"), blake256CL);
+    source_code = std::regex_replace(source_code, std::regex("ZRMIG_INCLUDE_GROESTL256"), groestl256CL);
 
     for (int i = 0; i < num_gpus; ++i) {
         if ((ret = InitOpenCLGpu(i, opencl_ctx, &ctx[i], source_code.c_str())) != OCL_ERR_SUCCESS) {
@@ -617,7 +617,7 @@ size_t InitOpenCL(GpuContext* ctx, size_t num_gpus, size_t platform_idx)
     return OCL_ERR_SUCCESS;
 }
 
-size_t XMRSetJob(GpuContext* ctx, uint8_t* input, size_t input_len, uint64_t target)
+size_t ZRMSetJob(GpuContext* ctx, uint8_t* input, size_t input_len, uint64_t target)
 {
     cl_int ret;
 
@@ -704,7 +704,7 @@ size_t XMRSetJob(GpuContext* ctx, uint8_t* input, size_t input_len, uint64_t tar
     return OCL_ERR_SUCCESS;
 }
 
-size_t XMRRunJob(GpuContext* ctx, cl_uint* HashOutput)
+size_t ZRMRunJob(GpuContext* ctx, cl_uint* HashOutput)
 {
     cl_int ret;
     cl_uint zero = 0;

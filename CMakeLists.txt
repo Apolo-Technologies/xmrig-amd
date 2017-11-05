@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0)
-project(xmrig-amd)
+project(zrmig-amd)
 
 option(WITH_AEON  "CryptoNight-Lite support" ON)
 option(WITH_HTTPD "HTTP REST API" ON)
@@ -92,7 +92,7 @@ set(SOURCES
     src/workers/Handle.cpp
     src/workers/Hashrate.cpp
     src/workers/Workers.cpp
-    src/xmrig.cpp
+    src/zrmig.cpp
    )
 
 set(SOURCES_CRYPTO
@@ -132,9 +132,9 @@ else()
     set(EXTRA_LIBS pthread)
 endif()
 
-add_definitions(/DXMRIG_AMD_PROJECT)
+add_definitions(/DZRMIG_AMD_PROJECT)
 add_definitions(/DUNICODE)
-add_definitions(/DXMRIG_NO_LIBCPUID)
+add_definitions(/DZRMIG_NO_LIBCPUID)
 add_definitions(/D__STDC_FORMAT_MACROS)
 add_definitions(/DRAPIDJSON_SSE2)
 #add_definitions(/DAPP_DEBUG)
@@ -157,7 +157,7 @@ if (HAVE_SYSLOG_H)
 endif()
 
 if (NOT WITH_AEON)
-    add_definitions(/DXMRIG_NO_AEON)
+    add_definitions(/DZRMIG_NO_AEON)
 endif()
 
 if (WITH_HTTPD)
@@ -170,8 +170,8 @@ if (WITH_HTTPD)
         message(FATAL_ERROR "microhttpd NOT found: use `-DWITH_HTTPD=OFF` to build without http deamon support")
     endif()
 else()
-    add_definitions(/DXMRIG_NO_HTTPD)
-    add_definitions(/DXMRIG_NO_API)
+    add_definitions(/DZRMIG_NO_HTTPD)
+    add_definitions(/DZRMIG_NO_API)
 
     set(MHD_LIBRARY "")
 endif()

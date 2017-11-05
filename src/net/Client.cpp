@@ -1,10 +1,10 @@
-/* XMRig
+/* ZRMig
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
  * Copyright 2014-2016 Wolf9466    <https://github.com/OhGodAPet>
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
- * Copyright 2016-2017 XMRig       <support@xmrig.com>
+ * Copyright 2016-2017 ZRMig       <support@zrmig.com>
  *
  *
  *   This program is free software: you can redistribute it and/or modify
@@ -38,7 +38,7 @@
 #include "rapidjson/writer.h"
 
 
-#ifdef XMRIG_PROXY_PROJECT
+#ifdef ZRMIG_PROXY_PROJECT
 #   include "proxy/JobResult.h"
 #else
 #   include "net/JobResult.h"
@@ -78,7 +78,7 @@ Client::Client(int id, const char *agent, IClientListener *listener) :
     m_recvBuf.base = m_buf;
     m_recvBuf.len  = sizeof(m_buf);
 
-#   ifndef XMRIG_PROXY_PROJECT
+#   ifndef ZRMIG_PROXY_PROJECT
     m_keepAliveTimer.data = this;
     uv_timer_init(uv_default_loop(), &m_keepAliveTimer);
 #   endif
@@ -111,7 +111,7 @@ void Client::connect(const Url *url)
 
 void Client::disconnect()
 {
-#   ifndef XMRIG_PROXY_PROJECT
+#   ifndef ZRMIG_PROXY_PROJECT
     uv_timer_stop(&m_keepAliveTimer);
 #   endif
 
@@ -152,7 +152,7 @@ void Client::tick(uint64_t now)
 
 int64_t Client::submit(const JobResult &result)
 {
-#   ifdef XMRIG_PROXY_PROJECT
+#   ifdef ZRMIG_PROXY_PROJECT
     const char *nonce = result.nonce;
     const char *data  = result.result;
 #   else
@@ -484,7 +484,7 @@ void Client::reconnect()
 {
     setState(ConnectingState);
 
-#   ifndef XMRIG_PROXY_PROJECT
+#   ifndef ZRMIG_PROXY_PROJECT
     if (m_url.isKeepAlive()) {
         uv_timer_stop(&m_keepAliveTimer);
     }
@@ -517,7 +517,7 @@ void Client::startTimeout()
 {
     m_expire = 0;
 
-#   ifndef XMRIG_PROXY_PROJECT
+#   ifndef ZRMIG_PROXY_PROJECT
     if (!m_url.isKeepAlive()) {
         return;
     }

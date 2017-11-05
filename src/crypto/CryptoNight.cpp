@@ -1,10 +1,10 @@
-/* XMRig
+/* ZRMig
  * Copyright 2010      Jeff Garzik <jgarzik@pobox.com>
  * Copyright 2012-2014 pooler      <pooler@litecoinpool.org>
  * Copyright 2014      Lucas Jones <https://github.com/lucasjones>
  * Copyright 2014-2016 Wolf9466    <https://github.com/OhGodAPet>
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
- * Copyright 2016-2017 XMRig       <support@xmrig.com>
+ * Copyright 2016-2017 ZRMig       <support@zrmig.com>
  *
  *
  *   This program is free software: you can redistribute it and/or modify
@@ -43,7 +43,7 @@ static void cryptonight_av3_softaes(const void *input, size_t size, void *output
 }
 
 
-#ifndef XMRIG_NO_AEON
+#ifndef ZRMIG_NO_AEON
 static void cryptonight_lite_av1_aesni(const void *input, size_t size, void *output, cryptonight_ctx *ctx) {
     cryptonight_hash<0x40000, MEMORY_LITE, 0xFFFF0, false>(input, size, output, ctx);
 }
@@ -88,7 +88,7 @@ bool CryptoNight::init(int algo, int variant)
         return false;
     }
 
-#   ifndef XMRIG_NO_AEON
+#   ifndef ZRMIG_NO_AEON
     const int index = algo == Options::ALGO_CRYPTONIGHT_LITE ? (variant + 3) : (variant - 1);
 #   else
     const int index = variant - 1;
@@ -119,7 +119,7 @@ bool CryptoNight::selfTest(int algo) {
 
     _mm_free(ctx);
 
-#   ifdef XMRIG_NO_AEON
+#   ifdef ZRMIG_NO_AEON
     return memcmp(output, test_output0, 32) == 0;
 #   else
     return memcmp(output, algo == Options::ALGO_CRYPTONIGHT_LITE ? test_output1 : test_output0, 32) == 0;
